@@ -20,3 +20,15 @@ WHERE color='y'
 SELECT model, speed, hd
 FROM pc
 WHERE (cd='12x' OR cd='24x') AND price <600
+
+Задание 6.
+Текст задания
+Задание: 6 (Serge I: 2002-10-28)
+Для каждого производителя, выпускающего ПК-блокноты c объёмом жесткого диска не менее 10 Гбайт, найти скорости таких ПК-блокнотов. Вывод: производитель, скорость.
+SELECT DISTINCT product.maker, laptop.speed
+FROM laptop 
+JOIN product ON product.model = laptop.model
+WHERE laptop.hd>=10
+
+
+
