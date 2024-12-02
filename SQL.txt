@@ -54,5 +54,12 @@ SELECT DISTINCT maker
 FROM product
 WHERE type='laptop'
 
+Задание: 9 (Serge I: 2002-11-02)
+Найдите производителей ПК с процессором не менее 450 Мгц. Вывести: Maker
+SELECT DISTINCT maker
+FROM pc
+JOIN product ON pc.model=product.model
+WHERE speed>=450
+
 
 
