@@ -44,5 +44,15 @@ SELECT DISTINCT product.model, printer.price
 FROM product JOIN printer ON product.model=printer.model
 WHERE maker='B'
 
+Задание: 8 (Serge I: 2003-02-03)
+Найдите производителя, выпускающего ПК, но не ПК-блокноты.
+SELECT DISTINCT maker
+FROM product
+WHERE type='pc'
+EXCEPT
+SELECT DISTINCT maker
+FROM product
+WHERE type='laptop'
+
 
 
