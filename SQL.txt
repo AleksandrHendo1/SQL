@@ -5,14 +5,14 @@
 SELECT model, ram, screen
 FROM laptop
 WHERE price >1000
-
+---------------------------------------------------
 Задание 4.
 Текст задания
 Задание: 4 (Serge I: 2002-09-21)
 Найдите все записи таблицы Printer для цветных принтеров.
 SELECT * FROM printer
 WHERE color='y'
-
+---------------------------------------------------
 Задание 5.
 Текст задания
 Задание: 5 (Serge I: 2002-09-30)
@@ -20,7 +20,7 @@ WHERE color='y'
 SELECT model, speed, hd
 FROM pc
 WHERE (cd='12x' OR cd='24x') AND price <600
-
+---------------------------------------------------
 Задание 6.
 Текст задания
 Задание: 6 (Serge I: 2002-10-28)
@@ -29,7 +29,7 @@ SELECT DISTINCT product.maker, laptop.speed
 FROM laptop 
 JOIN product ON product.model = laptop.model
 WHERE laptop.hd>=10
-
+---------------------------------------------------
 Задание: 7 (Serge I: 2002-11-02)
 Найдите номера моделей и цены всех имеющихся в продаже продуктов (любого типа) производителя B (латинская буква).
 SELECT DISTINCT product.model, pc.price
@@ -43,7 +43,7 @@ UNION
 SELECT DISTINCT product.model, printer.price
 FROM product JOIN printer ON product.model=printer.model
 WHERE maker='B'
-
+---------------------------------------------------
 Задание: 8 (Serge I: 2003-02-03)
 Найдите производителя, выпускающего ПК, но не ПК-блокноты.
 SELECT DISTINCT maker
@@ -53,14 +53,14 @@ EXCEPT
 SELECT DISTINCT maker
 FROM product
 WHERE type='laptop'
-
+---------------------------------------------------
 Задание: 9 (Serge I: 2002-11-02)
 Найдите производителей ПК с процессором не менее 450 Мгц. Вывести: Maker
 SELECT DISTINCT maker
 FROM pc
 JOIN product ON pc.model=product.model
 WHERE speed>=450
-
+---------------------------------------------------
 Задание: 10 (Serge I: 2002-09-23)
 Найдите модели принтеров, имеющих самую высокую цену. Вывести: model, price
 SELECT model, price
@@ -69,26 +69,42 @@ WHERE price=(SELECT MAX(price)FROM printer)
 
 
 
-
+---------------------------------------------------
 Задание: 11 (Serge I: 2002-11-02)
 Найдите среднюю скорость ПК.
 
 SELECT AVG(speed)
 FROM pc
-
+---------------------------------------------------
 Задание: 12 (Serge I: 2002-11-02)
 Найдите среднюю скорость ПК-блокнотов, цена которых превышает 1000 дол.
 
 SELECT AVG(speed)
 FROM laptop
 WHERE price>1000
-
+---------------------------------------------------
 Задание: 13 (Serge I: 2002-11-02)
 Найдите среднюю скорость ПК, выпущенных производителем A.
 
 SELECT AVG(speed)
 FROM pc, product
 WHERE pc.model=product.model AND maker='A'
+---------------------------------------------------
+Задание: 14 (Serge I: 2002-11-05)
+Найдите класс, имя и страну для кораблей из таблицы Ships, имеющих не менее 10 орудий.
+
+SELECT s.class, s.name, c.country
+FROM ships s
+JOIN classes c ON s.class = c.class
+WHERE c.numGuns >= 10
+---------------------------------------------------
+Задание: 15 (Serge I: 2003-02-03)
+Найдите размеры жестких дисков, совпадающих у двух и более PC. Вывести: HD
+
+SELECT hd
+FROM pc
+GROUP BY (hd)
+HAVING COUNT (model)>=2
 
 
 
